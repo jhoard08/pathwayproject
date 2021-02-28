@@ -12,3 +12,7 @@
 .node-start {
   background-color: blue;
 }
+
+.node-wall {
+  background-color: rgb(0, 0, 0);
+}

@@ -16,7 +16,6 @@ export default class PathfindingVisual extends Component {
       mouseIsPressed: false,
     };
   }
-
   componentDidMount() {
     const grid = getInitialGrid();
     this.setState({ grid });
