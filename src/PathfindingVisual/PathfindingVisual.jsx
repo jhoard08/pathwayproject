@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Node from './Node/Node';
+import { dijkstra, getNodesInShortestPathOrder } from '../Algorithms/dijkstra';
 
 import './PathfindingVisual.css';
 
@@ -36,11 +37,49 @@ export default class PathfindingVisual extends Component {
     this.setState({ mouseIsPressed: false });
   }
 
+  animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder) {
+    for (let i = 0; i <= visitedNodesInOrder.length; i++) {
+      if (i === visitedNodesInOrder.length) {
+        setTimeout(() => {
+          this.animateShortestPath(nodesInShortestPathOrder);
+        }, 10 * i);
+        return;
+      }
+      setTimeout(() => {
+        const node = visitedNodesInOrder[i];
+        document.getElementById(`node-${node.row}-${node.col}`).className =
+          'node node-visited';
+      }, 10 * i);
+    }
+  }
+
+  animateShortestPath(nodesInShortestPathOrder) {
+    for (let i = 0; i < nodesInShortestPathOrder.length; i++) {
+      setTimeout(() => {
+        const node = nodesInShortestPathOrder[i];
+        document.getElementById(`node-${node.row}-${node.col}`).className =
+          'node node-shortest-path';
+      }, 5 * i);
+    }
+  }
+
+  visualizeDijkstra() {
+    const { grid } = this.state;
+    const startNode = grid[START_NODE_ROW][START_NODE_COL];
+    const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
+    const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
+    const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
+    this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
+  }
+
   render() {
     const { grid, mouseIsPressed } = this.state;
 
     return (
       <>
+        <button onClick={() => this.visualizeDijkstra()}>
+          Visualize Dijkstra's Algorithm
+        </button>
         <div className="grid">
           {grid.map((row, rowIdx) => {
             return (
@@ -107,3 +146,4 @@ const getNewGridWithWallToggled = (grid, row, col) => {
   newGrid[row][col] = newNode;
   return newGrid;
 };
+
