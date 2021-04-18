@@ -1,3 +1,17 @@
 .grid {
   margin: 100px 0 0;
 }
+
+.button {
+  margin: auto;
+  text-align: center;
+  position: relative;
+  border: none;
+  font-size: 20px;
+  padding: 14px 40px;
+  border-radius: 12px;
+}
+
+.button:hover{
+  background-color: #7DFDFE;
+}

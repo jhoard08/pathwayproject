@@ -4,7 +4,7 @@ import PathfindingVisual from './PathfindingVisual/PathfindingVisual';
 
 function App() {
   return (
-    <div classname="App">
+    <div className="App">
       <PathfindingVisual></PathfindingVisual>
     </div>
   );

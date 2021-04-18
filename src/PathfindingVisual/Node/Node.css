@@ -6,15 +6,15 @@
 }
 
 .node-finish {
-  background-color: red;
+  background-color: rgb(153,0,0);
 }
 
 .node-start {
-  background-color: blue;
+  background-color: #7DFDFE;
 }
 
 .node-wall {
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
 }
 
 .node-shortest-path {
@@ -31,17 +31,17 @@
 @keyframes shortestPath {
   0% {
     transform: scale(0.6);
-    background-color: rgb(255, 254, 106);
+    background-color: rgb(235, 97, 35);
   }
 
   50% {
     transform: scale(1.2);
-    background-color: rgb(255, 254, 106);
+    background-color: rgb(235, 97, 35);
   }
 
   100% {
     transform: scale(1);
-    background-color: rgb(255, 254, 106);
+    background-color: rgb(235, 97, 35);
   }
 }
 
